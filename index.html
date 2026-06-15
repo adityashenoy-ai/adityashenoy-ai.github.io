@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Shenoy — AI Product Manager</title>
+  <meta name="description" content="Senior Product Manager specializing in AI product strategy, BFSI platforms, and enterprise digital transformation." />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --bg3: #1a1a24;
+      --border: #2a2a3a;
+      --accent: #6366f1;
+      --accent2: #8b5cf6;
+      --accent3: #06b6d4;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --tag-bg: #1e1e30;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-weight: 700; font-size: 1rem; letter-spacing: -0.02em; color: var(--text); }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #fff; text-decoration: none;
+      padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.875rem;
+      font-weight: 500; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 6rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; max-width: 800px; text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--tag-bg); border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem; border-radius: 100px;
+      font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+    }
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.05; margin-bottom: 1rem;
+    }
+    .hero-name .grad {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--muted); margin-bottom: 1.5rem; font-weight: 400;
+    }
+    .hero-summary {
+      max-width: 640px; margin: 0 auto 2.5rem;
+      color: var(--muted); font-size: 1rem; line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      padding: 0.75rem 1.75rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(99,102,241,0.5); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      padding: 0.75rem 1.75rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; justify-content: center;
+      margin-top: 3.5rem; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem;
+    }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 540px; margin: 0 auto; }
+    .divider {
+      width: 48px; height: 3px; margin: 0 auto 1rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+
+    /* ── AI PROJECTS ── */
+    #projects { background: var(--bg2); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+      gap: 1.5rem;
+    }
+    @media (max-width: 560px) { .projects-grid { grid-template-columns: 1fr; } }
+    .project-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.75rem;
+      transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .project-card:hover::before { opacity: 1; }
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
+    .project-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; flex-shrink: 0;
+    }
+    .project-links { display: flex; gap: 0.5rem; }
+    .project-link {
+      color: var(--muted); text-decoration: none;
+      padding: 0.35rem 0.65rem; border-radius: 6px;
+      border: 1px solid var(--border); font-size: 0.75rem;
+      transition: all 0.2s;
+    }
+    .project-link:hover { color: var(--accent); border-color: var(--accent); }
+    .project-name {
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: -0.01em;
+    }
+    .project-tagline { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; }
+    .project-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.7; margin-bottom: 1rem; }
+    .project-bullets { list-style: none; margin-bottom: 1.25rem; }
+    .project-bullets li {
+      font-size: 0.825rem; color: var(--muted); padding: 0.2rem 0 0.2rem 1.1rem;
+      position: relative; line-height: 1.6;
+    }
+    .project-bullets li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.75rem;
+    }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      background: var(--tag-bg); border: 1px solid var(--border);
+      color: var(--muted); font-size: 0.72rem; font-weight: 500;
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+    }
+    .tag.accent { color: var(--accent); border-color: rgba(99,102,241,0.3); }
+    .project-problem {
+      font-size: 0.85rem; color: var(--text); line-height: 1.65;
+      margin-bottom: 0.85rem; padding: 0.6rem 0.75rem;
+      background: rgba(99,102,241,0.06);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+    }
+    .project-section-label {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin: 0.85rem 0 0.35rem;
+    }
+    .project-outcome {
+      margin-top: 1rem; padding: 0.55rem 0.75rem;
+      background: rgba(34,197,94,0.07);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 6px; font-size: 0.825rem;
+      color: #4ade80; font-weight: 600;
+    }
+
+    /* ── GITHUB REPOS ── */
+    #repos { background: var(--bg); }
+    .repos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .repo-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem;
+      text-decoration: none; transition: all 0.2s;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .repo-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .repo-name { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+    .repo-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; flex: 1; }
+    .repo-meta { display: flex; gap: 1rem; align-items: center; margin-top: 0.25rem; }
+    .repo-lang { display: flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; color: var(--muted); }
+    .lang-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg2); }
+    .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .timeline-item {
+      display: flex; gap: 1.5rem; margin-bottom: 2.5rem; position: relative;
+    }
+    .timeline-dot {
+      width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+      background: var(--bg3); border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; z-index: 1;
+    }
+    .timeline-content {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem 1.5rem; flex: 1;
+      transition: border-color 0.2s;
+    }
+    .timeline-content:hover { border-color: var(--accent); }
+    .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+    .timeline-role { font-size: 1rem; font-weight: 700; }
+    .timeline-period {
+      font-size: 0.75rem; color: var(--accent); background: rgba(99,102,241,0.1);
+      padding: 0.2rem 0.6rem; border-radius: 4px; white-space: nowrap;
+    }
+    .timeline-company { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .timeline-bullets { list-style: none; }
+    .timeline-bullets li {
+      font-size: 0.85rem; color: var(--muted); padding: 0.2rem 0 0.2rem 1.1rem;
+      position: relative; line-height: 1.6;
+    }
+    .timeline-bullets li::before {
+      content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem;
+    }
+    .skill-group {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .skill-group-title {
+      font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--accent); margin-bottom: 1rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      background: var(--tag-bg); border: 1px solid var(--border);
+      color: var(--text); font-size: 0.8rem; font-weight: 500;
+      padding: 0.3rem 0.75rem; border-radius: 6px;
+    }
+    .certifications { margin-top: 2rem; text-align: center; }
+    .cert-chips { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 0.75rem; }
+    .cert-chip {
+      background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15));
+      border: 1px solid rgba(99,102,241,0.3);
+      color: var(--text); font-size: 0.875rem; font-weight: 600;
+      padding: 0.5rem 1.25rem; border-radius: 8px;
+    }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--bg2); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+    .edu-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.35rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .edu-card:hover { border-color: var(--accent); }
+    .edu-degree { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .edu-school { font-size: 0.875rem; color: var(--accent); margin-bottom: 0.25rem; }
+    .edu-meta { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); }
+    .edu-badge {
+      display: inline-block; margin-top: 0.5rem;
+      background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3);
+      color: #4ade80; font-size: 0.72rem; font-weight: 600;
+      padding: 0.15rem 0.6rem; border-radius: 4px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg);
+      text-align: center;
+    }
+    .contact-card {
+      max-width: 620px; margin: 0 auto;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 16px; padding: 3rem 2rem;
+    }
+    .contact-links {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--tag-bg); border: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+      padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link svg { width: 16px; height: 16px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center; padding: 1.5rem 2rem;
+      font-size: 0.8rem; color: var(--muted);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AS<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#repos">GitHub</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:ashenoy1000@gmail.com">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Open to AI PM opportunities
+    </div>
+    <h1 class="hero-name">
+      Aditya <span class="grad">Shenoy</span>
+    </h1>
+    <p class="hero-title">Senior Product Manager &nbsp;·&nbsp; AI / BFSI / GovTech</p>
+    <p class="hero-summary">
+      7+ years bridging engineering depth, strategy consulting, and data-driven product execution.
+      NYU EE &nbsp;·&nbsp; MBA Business Analytics (4.0 GPA) &nbsp;·&nbsp; IIM Strategic Management.
+      I build AI-powered products that ship revenue.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#projects">View AI Projects</a>
+      <a class="btn-secondary" href="https://github.com/adityashenoy-ai" target="_blank" rel="noopener">GitHub Profile</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$1M+</div>
+        <div class="stat-label">Revenue Launched</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">AI Projects Built</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4.0</div>
+        <div class="stat-label">MBA GPA (Dean's List)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">AI Projects</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Built with AI, not just about it</h2>
+      <p class="section-sub">End-to-end AI tools I designed, architected, and shipped — from idea to working product.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">⚖️</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/adityashenoy-ai" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-name">Regulatory Change Impact Analyzer</div>
+        <div class="project-tagline">AI compliance tool for FinTech product teams</div>
+        <div class="project-problem">FinTech compliance teams spend 2+ weeks per RBI, SEBI, or IRDAI circular manually reading, interpreting, and translating obligations into engineering tickets — with no consistency or traceability.</div>
+        <div class="project-section-label">PM Decisions</div>
+        <ul class="project-bullets">
+          <li>Built a hand-annotated 3-level taxonomy (18 domains) before writing any AI code — established what "obligation" means so the LLM has a defined target, not an open-ended task</li>
+          <li>Separated severity scoring (rules-based) from plain-language explanation (LLM) — compliance and legal teams can audit and defend outputs without trusting a black box</li>
+          <li>Scoped to Indian regulatory perimeter only; traded breadth for trustworthiness</li>
+        </ul>
+        <div class="project-section-label">AI Design</div>
+        <ul class="project-bullets">
+          <li>Claude API maps circular language to taxonomy nodes; deterministic rules engine assigns severity — LLM handles ambiguity, rules handle accountability</li>
+        </ul>
+        <div class="project-outcome">📉 Circular-to-Jira-ticket lag: 2 weeks → under 1 hour</div>
+        <div class="tech-tags">
+          <span class="tag accent">Python</span>
+          <span class="tag accent">FastAPI</span>
+          <span class="tag accent">Claude API</span>
+          <span class="tag">pgvector</span>
+          <span class="tag">React</span>
+          <span class="tag">FinTech</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">💸</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/adityashenoy-ai" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-name">PayMind AI</div>
+        <div class="project-tagline">UPI Intelligence & Bill Splitting Platform</div>
+        <div class="project-problem">Indian UPI users have no native tool to understand their spending — bank apps show raw transactions, not insights — and splitting group bills requires manual calculation plus awkward WhatsApp coordination.</div>
+        <div class="project-section-label">PM Decisions</div>
+        <ul class="project-bullets">
+          <li>Chose browser-only, zero-backend architecture — no login, no data storage, eliminating the privacy friction that kills adoption for financial tools</li>
+          <li>Kept bill splitting fully deterministic (greedy debt minimisation) rather than AI-assisted — users need to trust the math, not interpret it</li>
+          <li>Scoped Spend Coach to conversational Q&A only, not automated nudges — lower trust barrier for a first-session, no-account product</li>
+        </ul>
+        <div class="project-section-label">AI Design</div>
+        <ul class="project-bullets">
+          <li>Claude API powers natural language spend queries only; categorisation and splitting are rule-based — AI where nuance matters, deterministic logic where correctness is non-negotiable</li>
+        </ul>
+        <div class="project-outcome">✅ Validated against 200+ real transactions — import to insight in under 2 minutes, no login required</div>
+        <div class="tech-tags">
+          <span class="tag accent">HTML/JS</span>
+          <span class="tag accent">Claude API</span>
+          <span class="tag">Cloudflare Workers</span>
+          <span class="tag">UPI</span>
+          <span class="tag">FinTech</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🛡️</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/adityashenoy-ai" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-name">AI Insurance Policy Gap Analyzer</div>
+        <div class="project-tagline">Domain-first AI tool for corporate insurance audit</div>
+        <div class="project-problem">HR managers and CFOs renewing group insurance have no visibility into whether their policy covers their workforce's actual demographic risk — brokers don't flag gaps proactively, leaving companies underinsured.</div>
+        <div class="project-section-label">PM Decisions</div>
+        <ul class="project-bullets">
+          <li>Annotated 43 policies across 9 insurers before writing any AI code — defined ground truth for what a "gap" is before asking the model to find one</li>
+          <li>Designed for broker distribution (white-label), not direct-to-buyer — brokers hold the renewal relationship and the trust; built to sell through them, not past them</li>
+          <li>Scoped to 4 policy types (health, term, WC, D&O) — broadest coverage without taxonomy sprawl that would hurt accuracy</li>
+        </ul>
+        <div class="project-section-label">AI Design</div>
+        <ul class="project-bullets">
+          <li>28-rule demographic risk engine flags gaps first; Claude API generates plain-language output sized for HR and CFO readers — rules own the judgment, LLM owns the communication</li>
+        </ul>
+        <div class="project-outcome">📋 Full group insurance audit in minutes vs. days of manual policy review across 9 insurers</div>
+        <div class="tech-tags">
+          <span class="tag accent">Python</span>
+          <span class="tag accent">FastAPI</span>
+          <span class="tag accent">Claude API</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">React</span>
+          <span class="tag">InsurTech</span>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">⚡</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/adityashenoy-ai" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-name">GenAI Interaction Import Utility</div>
+        <div class="project-tagline">Enterprise data validation & integration automation</div>
+        <div class="project-problem">Enterprise users on Crescerance's GovTech platform were losing hours per week to manual data validation and re-entry — a bottleneck that slowed onboarding and eroded platform stickiness.</div>
+        <div class="project-section-label">PM Decisions</div>
+        <ul class="project-bullets">
+          <li>Scoped as an internal proof-of-concept first — validated AI workflow automation with real internal users before proposing customer-facing rollout, reducing organisational risk</li>
+          <li>Chose Lovable + Supabase for speed to working prototype — got stakeholder buy-in with a live demo in days, not a slide deck</li>
+          <li>Defined success as internal adoption, not just shipping — ensured the tool actually changed how people worked before claiming the win</li>
+        </ul>
+        <div class="project-section-label">AI Design</div>
+        <ul class="project-bullets">
+          <li>Claude API handles validation logic that previously required manual expert review; structured output integrates directly with existing platform data model — no custom middleware layer</li>
+        </ul>
+        <div class="project-outcome">⚡ ~60% reduction in manual processing effort — adopted internally as foundation for Crescerance's AI automation roadmap</div>
+        <div class="tech-tags">
+          <span class="tag accent">Lovable</span>
+          <span class="tag accent">Supabase</span>
+          <span class="tag accent">Claude API</span>
+          <span class="tag">GovTech</span>
+          <span class="tag">Enterprise</span>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🏦</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/adityashenoy-ai" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-name">Loan Application Multi-Agent System</div>
+        <div class="project-tagline">Capstone — AI Agent Orchestration Specialist Training</div>
+        <div class="project-problem">Digital lenders need loan decisions that are fast (applicants expect near-instant responses), safe (fraud and identity failures are non-negotiable), and scalable (thousands of daily applications cannot route to human underwriters) — a conflict no single AI orchestration pattern can resolve.</div>
+        <div class="project-section-label">PM Decisions</div>
+        <ul class="project-bullets">
+          <li>Combined all four orchestration patterns deliberately — router, parallel agents, sequential pipeline, and orchestrator — each chosen for a specific sub-problem, with explicit justification for why a simpler pattern was not sufficient at each layer</li>
+          <li>Made the merge/triage step deterministic code, not an LLM call — the highest-stakes routing decision in the system should not introduce non-determinism; an LLM here adds cost, latency, and variance for zero benefit</li>
+          <li>Constrained write access to exactly two places system-wide: disbursement on the CLEAN path only, and document requests to applicants — the most autonomous component in the system has the most restricted capabilities</li>
+          <li>Introduced a fourth oversight pattern ("act then audit") covering high-volume clean approvals where pre-approval is operationally impossible but post-action review is still required</li>
+        </ul>
+        <div class="project-section-label">AI Design</div>
+        <ul class="project-bullets">
+          <li>Four parallel agents are fact-gatherers only — KYC, credit, fraud, and income each answer one factual question with read-only tools and produce no recommendations; all judgment is concentrated in the deterministic merge step</li>
+          <li>Orchestrator dynamically selects investigation sub-agents for ambiguous cases, hard-capped at 3 calls to prevent infinite loops; the RISKY path bypasses all agentic processing entirely — the highest-risk cases are handled by the least "AI" part of the system</li>
+        </ul>
+        <div class="project-outcome">🏗️ Full system design: 4-pattern architecture · 5-layer guardrail framework · domain-specific golden test set · multi-agent audit trail · LangChain + CrewAI implementation mapping</div>
+        <div class="tech-tags">
+          <span class="tag accent">LangGraph</span>
+          <span class="tag accent">CrewAI</span>
+          <span class="tag accent">Claude API</span>
+          <span class="tag">Multi-Agent</span>
+          <span class="tag">System Design</span>
+          <span class="tag">FinTech</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB REPOS -->
+<section id="repos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Open Source</span>
+      <div class="divider"></div>
+      <h2 class="section-title">GitHub Repositories</h2>
+      <p class="section-sub">Public projects spanning AI, FinTech, GovTech, and infrastructure.</p>
+    </div>
+    <div class="repos-grid">
+      <a class="repo-card reveal" href="https://github.com/adityashenoy-ai/CrisisLens_MumbaiHacks" target="_blank" rel="noopener">
+        <div class="repo-name">CrisisLens_MumbaiHacks</div>
+        <div class="repo-desc">Agentic system for real-time misinformation detection and public updates during crises.</div>
+        <div class="repo-meta">
+          <div class="repo-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</div>
+        </div>
+      </a>
+      <a class="repo-card reveal" href="https://github.com/adityashenoy-ai/ai-fraud-compliance-brain" target="_blank" rel="noopener">
+        <div class="repo-name">ai-fraud-compliance-brain</div>
+        <div class="repo-desc">AI-powered fraud detection and compliance reasoning for financial platforms.</div>
+        <div class="repo-meta">
+          <div class="repo-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</div>
+        </div>
+      </a>
+      <a class="repo-card reveal" href="https://github.com/adityashenoy-ai/trade-finance-risk-ai" target="_blank" rel="noopener">
+        <div class="repo-name">trade-finance-risk-ai</div>
+        <div class="repo-desc">AI risk analysis engine for trade finance workflows and credit underwriting.</div>
+        <div class="repo-meta">
+          <div class="repo-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</div>
+        </div>
+      </a>
+      <a class="repo-card reveal" href="https://github.com/adityashenoy-ai/citizen-feedback-analyzer" target="_blank" rel="noopener">
+        <div class="repo-name">citizen-feedback-analyzer</div>
+        <div class="repo-desc">NLP tool for analyzing citizen feedback data on GovTech platforms.</div>
+        <div class="repo-meta">
+          <div class="repo-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</div>
+        </div>
+      </a>
+      <a class="repo-card reveal" href="https://github.com/adityashenoy-ai/ai-gtm-blueprint" target="_blank" rel="noopener">
+        <div class="repo-name">ai-gtm-blueprint</div>
+        <div class="repo-desc">AI-assisted go-to-market strategy framework and blueprint generator.</div>
+        <div class="repo-meta">
+          <div class="repo-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</div>
+        </div>
+      </a>
+      <a class="repo-card reveal" href="https://github.com/adityashenoy-ai/pc_builder_India" target="_blank" rel="noopener">
+        <div class="repo-name">pc_builder_India</div>
+        <div class="repo-desc">PC component builder and compatibility checker tailored for the Indian market.</div>
+        <div class="repo-meta">
+          <div class="repo-lang"><span class="lang-dot" style="background:#e34c26"></span>HTML</div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center; margin-top:2rem;">
+      <a class="btn-secondary" href="https://github.com/adityashenoy-ai" target="_blank" rel="noopener">View all repositories ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Work Experience</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Where I've shipped</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🚀</div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-role">Senior Product Manager, Strategy</div>
+            <div class="timeline-period">May 2023 – Present</div>
+          </div>
+          <div class="timeline-company">Crescerance (Engagii) &nbsp;·&nbsp; GovTech SaaS, Mumbai</div>
+          <ul class="timeline-bullets">
+            <li>17% retention increase and 29% engagement boost through A/B-tested UX enhancements from 15,000+ user insights</li>
+            <li>39% repeat engagement increase via predictive analytics-driven campaigns using 50,000+ behavioral profiles</li>
+            <li>Delivered $1M+ new revenue by launching integrated cross-channel messaging (SMS, email, in-app)</li>
+            <li>Shipped GenAI workflow automation tool reducing manual processing by ~60%</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">💳</div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-role">Product Manager, Strategy & Roadmap</div>
+            <div class="timeline-period">Jul 2022 – Apr 2023</div>
+          </div>
+          <div class="timeline-company">Safexpay &nbsp;·&nbsp; FinTech / Neo-Banking SaaS, Mumbai</div>
+          <ul class="timeline-bullets">
+            <li>Launched Digital Lending SaaS platform compressing merchant onboarding from 4 days to 15 minutes; 6 enterprise merchants in month one</li>
+            <li>Redesigned API integration experience with self-serve SDKs, boosting active merchant base by 22%</li>
+            <li>Accelerated GTM by 2 months and cut credit module development costs by 30%</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🚢</div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-role">Associate Product Manager, FinTech</div>
+            <div class="timeline-period">Jan 2022 – Jul 2022</div>
+          </div>
+          <div class="timeline-company">Cogoport &nbsp;·&nbsp; Trade Finance & Logistics, Mumbai</div>
+          <ul class="timeline-bullets">
+            <li>19% ARPU increase via bundled multi-country trade finance with real-time utilization prompts</li>
+            <li>Launched Ship Now Pay Later — real-time credit underwriting boosting SME shipment volumes by 25%</li>
+            <li>Reduced FX rate procurement time from 3 hours to 6 minutes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">📊</div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-role">Associate Strategy Consultant</div>
+            <div class="timeline-period">Aug 2021 – Dec 2021</div>
+          </div>
+          <div class="timeline-company">Kanvic Consulting &nbsp;·&nbsp; Management Consulting</div>
+          <ul class="timeline-bullets">
+            <li>Delivered ₹30 Cr+ annualized savings and 15% profit growth for Fortune 500 clients via supply chain optimization</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🌐</div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-role">Consultant Network Engineer</div>
+            <div class="timeline-period">May 2017 – Jul 2019</div>
+          </div>
+          <div class="timeline-company">Tenfour &nbsp;·&nbsp; Enterprise IT Infrastructure</div>
+          <ul class="timeline-bullets">
+            <li>Reduced enterprise IT costs by 35% and improved network performance by 40% via SD-WAN redesign across global client sites</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Skills & Tools</span>
+      <div class="divider"></div>
+      <h2 class="section-title">What I work with</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-title">AI & GenAI</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Claude API</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">LLM Product Design</span>
+          <span class="skill-tag">Lovable</span>
+          <span class="skill-tag">Supabase</span>
+          <span class="skill-tag">AI Workflow Automation</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Data & Analytics</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Python (Pandas, NumPy)</span>
+          <span class="skill-tag">R (dplyr, ggplot2)</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Alteryx</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Product Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">JIRA</span>
+          <span class="skill-tag">Confluence</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Notion</span>
+          <span class="skill-tag">Salesforce</span>
+          <span class="skill-tag">Asana</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Frameworks & Methods</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Agile / Scrum</span>
+          <span class="skill-tag">Kanban</span>
+          <span class="skill-tag">RICE</span>
+          <span class="skill-tag">MoSCoW</span>
+          <span class="skill-tag">OKRs</span>
+          <span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">Funnel Optimization</span>
+        </div>
+      </div>
+    </div>
+    <div class="certifications reveal">
+      <p style="font-size:0.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;">Certifications</p>
+      <div class="cert-chips">
+        <span class="cert-chip">PMP — Project Management Professional</span>
+        <span class="cert-chip">PSM I — Professional Scrum Master</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Education</span>
+      <div class="divider"></div>
+      <h2 class="section-title">Academic background</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-degree">Executive Program in Strategic Management</div>
+        <div class="edu-school">Indian Institute of Management (IIM), Lucknow</div>
+        <div class="edu-meta"><span>Jan 2024 – Feb 2025</span></div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">MBA — Business Analytics</div>
+        <div class="edu-school">Stevens Institute of Technology</div>
+        <div class="edu-meta"><span>Aug 2019 – May 2021</span><span>GPA 4.0 / 4.0</span></div>
+        <div class="edu-badge">Dean's List &nbsp;·&nbsp; Top 1%</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">MS — Electrical Engineering</div>
+        <div class="edu-school">New York University (NYU)</div>
+        <div class="edu-meta"><span>Aug 2015 – May 2017</span><span>GPA 3.4 / 4.0</span></div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">PG Diploma — Financial Management</div>
+        <div class="edu-school">University of Mumbai</div>
+        <div class="edu-meta"><span>Jul 2021 – Jul 2022</span><span>GPA 3.8 / 4.0</span></div>
+        <div class="edu-badge">Top 5 Percentile</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">BE — Electronics & Telecommunications</div>
+        <div class="edu-school">University of Mumbai</div>
+        <div class="edu-meta"><span>Aug 2011 – May 2015</span><span>GPA 3.6 / 4.0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <span class="section-label">Get in Touch</span>
+      <h2 class="section-title" style="margin-top:0.5rem;">Let's build something.</h2>
+      <p style="color:var(--muted); margin-top:0.75rem; font-size:0.95rem;">
+        Open to AI PM roles, advisory work, and consulting in BFSI, FinTech, and enterprise digital transformation.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:ashenoy1000@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          ashenoy1000@gmail.com
+        </a>
+        <a class="contact-link" href="https://github.com/adityashenoy-ai" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/aditya-shenoy" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.93v5.68H9.37V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.44v6.3zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Aditya Shenoy &nbsp;·&nbsp; Mumbai, India &nbsp;·&nbsp; Built with GitHub Pages</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
